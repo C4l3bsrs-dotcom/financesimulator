@@ -1,0 +1,22 @@
+import numpy as np
+
+def patrimonio_acumulado(aporte_inicial, aporte_final, anos, taxa_ao_ano):
+    meses = anos * 12
+    r_mensal = taxa_ao_ano / 12
+    aportes = np.linspace(aporte_inicial, aporte_final, meses)
+    saldo = 0
+    for aporte in aportes:
+        saldo = saldo * (1 + r_mensal) + aporte
+    return saldo
+
+anos = 20
+aporte_inicial = 7500
+aporte_final = 450000
+
+resultado_10 = patrimonio_acumulado(aporte_inicial, aporte_final, anos, 0.10)
+resultado_12 = patrimonio_acumulado(aporte_inicial, aporte_final, anos, 0.12)
+resultado_15 = patrimonio_acumulado(aporte_inicial, aporte_final, anos, 0.15)
+
+print(f"Patrimônio acumulado com 10% ao ano: R$ {resultado_10:,.2f}")
+print(f"Patrimônio acumulado com 12% ao ano: R$ {resultado_12:,.2f}")
+print(f"Patrimônio acumulado com 15% ao ano: R$ {resultado_15:,.2f}")
